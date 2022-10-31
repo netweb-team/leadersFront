@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, NgZone } from '@angular/core';
 import { timeStamp } from 'console';
 import { BehaviorSubject } from 'rxjs';
 import { Flat } from '../models/flat';
@@ -15,12 +15,14 @@ export class MapFlatPopupService {
 
 
   constructor(
+    private readonly zone: NgZone,
   ) {
     this.popupFlatData$.subscribe(res => console.log(res))
   }
 
   public openPopup(flat: Flat) {
     console.log('open popup')
-    this._popupFlatData$.next(flat);
+    this.zone.run(() =>
+      this._popupFlatData$.next(flat))
   }
 }
