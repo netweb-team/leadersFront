@@ -5,6 +5,7 @@ import { Flat } from '../models/flat';
 import { flatMock } from './flat.mock';
 import { MatIconRegistry } from '@angular/material/icon';
 import { AppInjector } from 'src/app/app/app.module';
+import { MapFlatPopupService } from './map-flat-popup.service';
 
 
 export const getMatIconRegistry = (): MatIconRegistry => AppInjector.get(MatIconRegistry);
@@ -40,9 +41,11 @@ export class MapService {
 
   private _layers = new Map<string, L.Layer>();
 
-  constructor() {}
+  constructor(
+    private readonly _popups: MapFlatPopupService,
+  ) {}
 
-  private _flats$ = of([flatMock]);
+  public _flats$ = of([...flatMock]);
 
   public initializeMap(map: L.Map): void {
     this._map = map;
@@ -72,6 +75,7 @@ export class MapService {
         )
         this._layers.set(flat.id, marker);
         this._map?.addLayer(marker);
+        marker.on('click', () => this._popups.openPopup(flat));
       }).catch()
     }
   }
