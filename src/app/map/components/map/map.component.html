@@ -1,2 +1,8 @@
-<div class="map-container" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
+<div class="page-title">
+  Карта для "Рассчет за май"
+</div>
+<div class="map-wrapper">
+  <div class="map-container" leaflet [leafletOptions]="options" (leafletMapReady)="onMapReady($event)">
+  </div>
+  <app-flat-popup></app-flat-popup>
 </div>
