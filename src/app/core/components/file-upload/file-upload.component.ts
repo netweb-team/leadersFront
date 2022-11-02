@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, ElementRef, EventEmitter, OnInit, Output, ViewChild } from '@angular/core';
 
 @Component({
   selector: 'app-file-upload',
@@ -6,6 +6,9 @@ import { Component, EventEmitter, OnInit, Output } from '@angular/core';
   styleUrls: ['./file-upload.component.scss']
 })
 export class FileUploadComponent {
+
+  @ViewChild('fileUpload')
+  public fileInput!: ElementRef;
 
 
   @Output()
@@ -26,5 +29,6 @@ export class FileUploadComponent {
 
           this.onFileSelected.emit(formData);
       }
+      this.fileInput.nativeElement.value = '';
   }
 }
