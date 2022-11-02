@@ -2,6 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MapService } from '../../services/map.service';
 
+
+
 @Component({
   selector: 'app-map',
   templateUrl: './map.component.html',
@@ -25,11 +27,12 @@ export class MapComponent implements OnInit {
   }
 
   public onMapReady(event: any) {
-    // this._map.initializeMap(map);
+    console.log(event);
+    this._map.initializeMap(event as L.Map);
   }
 
   public ngOnDestroy() {
-    // this._map.disposeMap();
+    this._map.disposeMap();
   }
 
 }
