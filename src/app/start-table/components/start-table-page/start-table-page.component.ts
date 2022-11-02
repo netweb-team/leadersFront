@@ -12,7 +12,7 @@ export class StartTablePageComponent implements OnInit {
   constructor(
     private readonly _snackBar: MatSnackBar,
     private readonly _startTable: StartTableService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
   }
@@ -22,6 +22,9 @@ export class StartTablePageComponent implements OnInit {
     try {
       const resp = await this._startTable.uploadPool(formData);
       console.log(resp);
+      if (resp.status === 201 && resp.body.table) {
+        this._startTable.setTable(resp.body.table);
+      }
     } catch {
       this._snackBar.open('Произошла непредвиденная ошибка')
     }

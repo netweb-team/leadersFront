@@ -14,7 +14,7 @@ export class StartTableComponent implements OnInit {
 
   public displayedColumns = ['check', 'index', 'address', 'rooms', 'floors'];
 
-  public dataSource: Observable<Array<PoolsTableRow & { index: number }>> = of([...PoolMock]).pipe(
+  public dataSource: Observable<Array<PoolsTableRow & { index: number }>> = this.startTable.table$.pipe(
     map(pools => pools.map((poolRow, index) => ({
       ...poolRow,
       index: index + 1,
