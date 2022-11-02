@@ -1,5 +1,5 @@
 <p>flat-popup works!</p>
-
+<!-- тут похоже будет табличка  -->
 <ng-container *ngIf="_popupData.popupFlatData$ | async as flat; else flatsList">
   <p> {{flat.addr}}</p>
   <p> {{flat.renovation }}</p>
@@ -7,7 +7,7 @@
   <p> {{flat.price}}</p>
 </ng-container>
 <ng-template #flatsList>
-  <div  class="one-flat-info" *ngFor="let flat of _map._flats$ | async">
+  <!-- <div  class="one-flat-info" *ngFor="let flat of _map._flats$ | async">
     <p> {{flat.addr}}</p>
-  </div>
+  </div> -->
 </ng-template>

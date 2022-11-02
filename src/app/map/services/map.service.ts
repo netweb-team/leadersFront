@@ -45,12 +45,15 @@ export class MapService {
     private readonly _popups: MapFlatPopupService,
   ) {}
 
-  public _flats$ = of([...flatMock]);
+  public _analogs$ = of([...flatMock]);
+
+  public _etalons$ = of([...flatMock]);
 
   public initializeMap(map: L.Map): void {
     this._map = map;
     this.subscriptions.push(
-      this._flats$.subscribe(flats => this.createFlatMarkers(flats))
+      this._analogs$.subscribe(flats => this.createFlatMarkers(flats, 'red')),
+      this._etalons$.subscribe(flats => this.createFlatMarkers(flats, 'blue'))
     )
   }
 
@@ -63,10 +66,10 @@ export class MapService {
   }
 
 
-  private createFlatMarkers(flats: Flat[]) {
+  private createFlatMarkers(flats: Flat[], color: string) {
     console.log(flats)
     for (const flat of flats) {
-      getFlatMarker(flat, 'red').then(icon => {
+      getFlatMarker(flat, color).then(icon => {
         const marker = new L.Marker(
           new L.LatLng(flat.lat, flat.lng),
           {
