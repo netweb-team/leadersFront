@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { SearchComponent } from './components/search/search.component';
 import { FileUploadComponent } from './components/file-upload/file-upload.component';
 import { MatButtonModule } from '@angular/material/button';
+import { MatIcon, MatIconModule } from '@angular/material/icon';
 
 
 
@@ -14,6 +15,7 @@ import { MatButtonModule } from '@angular/material/button';
   imports: [
     CommonModule,
     MatButtonModule,
+    MatIconModule,
   ],
   exports: [
     FileUploadComponent,

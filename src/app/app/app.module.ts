@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { Injector, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -10,6 +10,7 @@ import { CoreModule } from '../core/core.module';
 import { StartTableModule } from '../start-table/start-table.module';
 import { HttpClientModule } from '@angular/common/http';
 
+export let AppInjector: Injector;
 @NgModule({
   declarations: [
     AppComponent
@@ -27,4 +28,8 @@ import { HttpClientModule } from '@angular/common/http';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(private readonly injector: Injector) {
+    AppInjector = this.injector;
+  }
+}
