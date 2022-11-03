@@ -1,0 +1,11 @@
+<input type="file" class="file-input"
+       (change)="selectFile($event)" #fileUpload
+       accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+
+<div class="file-upload">
+
+    <button mat-stroked-button color="primary" class="upload-btn"
+      (click)="fileUpload.click()">
+      Загрузить файл
+    </button>
+</div>

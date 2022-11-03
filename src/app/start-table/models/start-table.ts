@@ -1,5 +1,3 @@
-import { PoolsTableRow } from "src/app/core/models/pool";
-
 export interface Flat {
   lat: number;
   lng: number;
@@ -13,15 +11,4 @@ export interface Flat {
   year: number;
   metro: string;
   id: string;
-}
-
-
-
-export interface Analog extends PoolsTableRow {
-}
-
-
-export interface EtalonWithAnalogs {
-  etalon: PoolsTableRow;
-  analogs: Analog[];
 }

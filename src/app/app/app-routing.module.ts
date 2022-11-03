@@ -12,6 +12,11 @@ const routes: Routes = [
     loadChildren: () => import('../map/map.module')
       .then(module => module.MapModule),
   },
+  {
+    path: 'start-table',
+    loadChildren: () => import('../start-table/start-table.module')
+      .then(module => module.StartTableModule),
+  },
 ];
 
 @NgModule({
