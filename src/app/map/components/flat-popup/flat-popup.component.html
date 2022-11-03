@@ -1,13 +1,35 @@
 <p>flat-popup works!</p>
-<!-- тут похоже будет табличка  -->
-<ng-container *ngIf="_popupData.popupFlatData$ | async as flat; else flatsList">
-  <p> {{flat.a}}</p>
-  <p> {{flat.r }}</p>
-  <p> {{flat.m}}</p>
-  <p> {{flat.p}}</p>
+<ng-container *ngIf="_popupData.popupFlatData$ | async as flat">
+  <table mat-table class="start-table" [dataSource]="data">
+
+    <ng-container matColumnDef="param">
+      <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef>Параметр</th>
+      <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
+        {{getCoefNameByType(element)}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="etalon">
+      <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> Эталон</th>
+      <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
+        {{ getParamValue(flat, element)}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="analog">
+      <th class="mat-body-2 start-table-address-column" mat-header-cell *matHeaderCellDef> Аналог</th>
+      <td class="mat-body-2 start-table-address-column" mat-cell *matCellDef="let element">
+        {{ getParamValue(flat, element)}}
+      </td>
+    </ng-container>
+
+    <ng-container matColumnDef="coef">
+      <th class="mat-body-2 start-table-rooms-column" mat-header-cell *matHeaderCellDef> Коэффициент </th>
+      <td class="mat-body-2 start-table-rooms-column" mat-cell *matCellDef="let element">
+        {{getCoefValue(null, element)}} </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>
+    <tr mat-row *matRowDef="let row; columns: columns;"></tr>
+  </table>
+
 </ng-container>
-<ng-template #flatsList>
-  <!-- <div  class="one-flat-info" *ngFor="let flat of _map._flats$ | async">
-    <p> {{flat.addr}}</p>
-  </div> -->
-</ng-template>
