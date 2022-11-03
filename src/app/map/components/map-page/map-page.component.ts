@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { EtalonsService } from '../../services/etalons.service';
 
 @Component({
   selector: 'app-map-page',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class MapPageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public readonly etalons: EtalonsService,
+  ) { }
 
   ngOnInit(): void {
   }

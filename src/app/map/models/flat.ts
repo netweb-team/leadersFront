@@ -15,13 +15,20 @@ export interface Flat {
   id: string;
 }
 
-
+export interface Etalon extends PoolsTableRow {
+  lat: number;
+  lng: number;
+  id: string;
+}
 
 export interface Analog extends PoolsTableRow {
+  lat: number;
+  lng: number;
+  id: string;
 }
 
 
 export interface EtalonWithAnalogs {
-  etalon: PoolsTableRow;
+  etalon: Etalon;
   analogs: Analog[];
 }

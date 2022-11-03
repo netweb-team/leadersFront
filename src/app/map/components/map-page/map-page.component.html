@@ -1,11 +1,8 @@
 <div class="sidebar">
   <h1>Эталонные объекты</h1>
   <div class="etalon-list">
-
-    <app-etalon-card></app-etalon-card>
-    <app-etalon-card></app-etalon-card>
-    <app-etalon-card></app-etalon-card>
-    <app-etalon-card></app-etalon-card>
+    <app-etalon-card *ngFor="let etalon of etalons.etalonsWithAnalogs$ | async" [etalon]="etalon">
+    </app-etalon-card>
   </div>
 </div>
 <app-map></app-map>

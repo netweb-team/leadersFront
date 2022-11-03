@@ -1,11 +1,12 @@
 import * as L from 'leaflet';
 import { Injectable } from '@angular/core';
 import { lastValueFrom, of, Subscription } from 'rxjs';
-import { Flat } from '../models/flat';
+import { Analog, Etalon, Flat } from '../models/flat';
 import { flatMock } from './flat.mock';
 import { MatIconRegistry } from '@angular/material/icon';
 import { AppInjector } from 'src/app/app/app.module';
 import { MapFlatPopupService } from './map-flat-popup.service';
+import { EtalonsService } from './etalons.service';
 
 
 export const getMatIconRegistry = (): MatIconRegistry => AppInjector.get(MatIconRegistry);
@@ -15,7 +16,7 @@ export async function getSvgIconHTMLElement(svgIcon: string): Promise<SVGElement
   return lastValueFrom(matIconRegistry.getNamedSvgIcon(svgIcon));
 }
 
-export async function getFlatMarker(flat: Flat, color: string) {
+export async function getFlatMarker(flat: Etalon | Analog, color: string) {
   const mainDiv = document.createElement('div');
   mainDiv.className = `flat-main-div`;
 
@@ -43,11 +44,12 @@ export class MapService {
 
   constructor(
     private readonly _popups: MapFlatPopupService,
+    private readonly _etalons: EtalonsService,
   ) {}
 
-  public _analogs$ = of([...flatMock]);
+  public _analogs$ = this._etalons.analogs$;
 
-  public _etalons$ = of([...flatMock]);
+  public _etalons$ = this._etalons.etalons$;
 
   public initializeMap(map: L.Map): void {
     this._map = map;
@@ -66,7 +68,7 @@ export class MapService {
   }
 
 
-  private createFlatMarkers(flats: Flat[], color: string) {
+  private createFlatMarkers(flats: (Etalon | Analog)[], color: string) {
     console.log(flats)
     for (const flat of flats) {
       getFlatMarker(flat, color).then(icon => {

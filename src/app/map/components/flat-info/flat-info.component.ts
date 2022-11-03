@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { PoolsTableRow } from 'src/app/core/models/pool';
 
 @Component({
   selector: 'app-flat-info',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./flat-info.component.scss']
 })
 export class FlatInfoComponent implements OnInit {
+
+  @Input()
+  public flatInfo?: PoolsTableRow;
 
   constructor() { }
 

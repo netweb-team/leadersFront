@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
+import { EtalonWithAnalogs } from '../../models/flat';
 
 @Component({
   selector: 'app-etalon-card',
@@ -6,6 +7,9 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./etalon-card.component.scss']
 })
 export class EtalonCardComponent implements OnInit {
+
+  @Input()
+  public etalon?: EtalonWithAnalogs;
 
   constructor() { }
 
