@@ -1,5 +1,6 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
+import { map } from 'rxjs';
 import { PoolsTableRow } from 'src/app/core/models/pool';
 import { MapFlatPopupService } from '../../services/map-flat-popup.service';
 import { MapService } from '../../services/map.service';
@@ -41,7 +42,15 @@ export class FlatPopupComponent implements OnInit {
   public getCoefValue(coef: any, type: string) {
     return 1;
   }
-  
+
+  public analog$ = this._popupData.popupFlatData$.pipe(
+    map(popupData => popupData?.analog),
+  )
+
+  public etalon$ = this._popupData.popupFlatData$.pipe(
+    map(popupData => popupData?.etalon),
+  )
+
   constructor(
     public readonly _popupData: MapFlatPopupService,
     public readonly _map: MapService,

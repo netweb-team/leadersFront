@@ -3,6 +3,8 @@
 <div class="etalon-analogs" *ngIf="etalon">
   <div class="etalon-analogs__title">Аналоги</div>
   <div class="etalon-analogs__list" >
-    <div *ngFor="let analog of etalon?.analogs"><mat-checkbox></mat-checkbox><app-analog-card [analog]="analog"></app-analog-card></div>
+    <div *ngFor="let analog of etalon?.analogs">
+      <mat-checkbox></mat-checkbox><app-analog-card [analog]="analog" [etalon]="etalon.etalon"></app-analog-card>
+    </div>
   </div>
 </div>

@@ -54,8 +54,8 @@ export class MapService {
   public initializeMap(map: L.Map): void {
     this._map = map;
     this.subscriptions.push(
-      this._analogs$.subscribe(flats => this.createFlatMarkers(flats, 'red')),
-      this._etalons$.subscribe(flats => this.createFlatMarkers(flats, 'blue'))
+      this._etalons.etalonsWithAnalogs$.subscribe(flats => flats.map(flat => this.createAnalogMarkers(flat.analogs, flat.etalon, 'red'))),
+      this._etalons$.subscribe(flats => this.createEtalonMarkers(flats, 'blue'))
     )
   }
 
@@ -68,7 +68,7 @@ export class MapService {
   }
 
 
-  private createFlatMarkers(flats: (Etalon | Analog)[], color: string) {
+  private createEtalonMarkers(flats: Etalon[], color: string) {
     console.log(flats)
     for (const flat of flats) {
       getFlatMarker(flat, color).then(icon => {
@@ -80,7 +80,22 @@ export class MapService {
         )
         this._layers.set(flat.id, marker);
         this._map?.addLayer(marker);
-        marker.on('click', () => this._popups.openPopup(flat));
+      }).catch()
+    }
+  }
+
+  private createAnalogMarkers(flats: Analog[],  etalon: Etalon, color: string) {
+    for (const flat of flats) {
+      getFlatMarker(flat, color).then(icon => {
+        const marker = new L.Marker(
+          new L.LatLng(flat.lat, flat.lng),
+          {
+            icon,
+          }
+        )
+        this._layers.set(flat.id, marker);
+        this._map?.addLayer(marker);
+        marker.on('click', () => this._popups.openPopup(flat, etalon));
       }).catch()
     }
   }

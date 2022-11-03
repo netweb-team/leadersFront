@@ -9,7 +9,7 @@ import { Analog, Etalon, Flat } from '../models/flat';
 export class MapFlatPopupService {
 
 
-  private readonly _popupFlatData$ = new BehaviorSubject<Etalon | Analog | null>(null);
+  private readonly _popupFlatData$ = new BehaviorSubject<{ etalon: Etalon; analog: Analog } | null>(null);
 
   public readonly popupFlatData$ = this._popupFlatData$.asObservable();
 
@@ -20,9 +20,9 @@ export class MapFlatPopupService {
     this.popupFlatData$.subscribe(res => console.log(res))
   }
 
-  public openPopup(flat: Etalon | Analog) {
+  public openPopup(analog: Analog , etalon: Etalon) {
     console.log('open popup')
     this.zone.run(() =>
-      this._popupFlatData$.next(flat))
+      this._popupFlatData$.next({analog, etalon}))
   }
 }
