@@ -1,7 +1,7 @@
 import { Injectable, NgZone } from '@angular/core';
 import { timeStamp } from 'console';
 import { BehaviorSubject } from 'rxjs';
-import { Flat } from '../models/flat';
+import { Analog, Etalon, Flat } from '../models/flat';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +9,7 @@ import { Flat } from '../models/flat';
 export class MapFlatPopupService {
 
 
-  private readonly _popupFlatData$ = new BehaviorSubject<Flat | null>(null);
+  private readonly _popupFlatData$ = new BehaviorSubject<{ etalon: Etalon; analog: Analog } | null>(null);
 
   public readonly popupFlatData$ = this._popupFlatData$.asObservable();
 
@@ -20,9 +20,9 @@ export class MapFlatPopupService {
     this.popupFlatData$.subscribe(res => console.log(res))
   }
 
-  public openPopup(flat: Flat) {
+  public openPopup(analog: Analog , etalon: Etalon) {
     console.log('open popup')
     this.zone.run(() =>
-      this._popupFlatData$.next(flat))
+      this._popupFlatData$.next({analog, etalon}))
   }
 }

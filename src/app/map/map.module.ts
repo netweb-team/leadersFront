@@ -11,6 +11,7 @@ import { AnalogCardComponent } from './components/analog-card/analog-card.compon
 import { FlatInfoComponent } from './components/flat-info/flat-info.component';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCheckboxModule } from '@angular/material/checkbox';
+import { MatTableModule } from '@angular/material/table';
 
 
 
@@ -30,6 +31,7 @@ import { MatCheckboxModule } from '@angular/material/checkbox';
     MatIconModule,
     MatButtonModule,
     MatCheckboxModule,
+    MatTableModule,
   ],
   exports: [
     MapComponent,

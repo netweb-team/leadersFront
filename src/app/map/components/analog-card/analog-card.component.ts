@@ -1,4 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
+import { Analog, Etalon } from '../../models/flat';
+import { MapFlatPopupService } from '../../services/map-flat-popup.service';
 
 @Component({
   selector: 'app-analog-card',
@@ -7,7 +9,15 @@ import { Component, Input, OnInit } from '@angular/core';
 })
 export class AnalogCardComponent implements OnInit {
 
-  constructor() { }
+  @Input()
+  public analog?: Analog;
+
+  @Input()
+  public etalon?: Etalon;
+
+  constructor(
+    public readonly popups: MapFlatPopupService,
+  ) { }
 
   ngOnInit(): void {
   }
