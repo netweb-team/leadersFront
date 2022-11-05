@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { Analog, Etalon } from '../../models/flat';
+import { EtalonWithAnalogs, Row } from '../../models/flat';
 import { MapFlatPopupService } from '../../services/map-flat-popup.service';
 
 @Component({
@@ -10,14 +10,14 @@ import { MapFlatPopupService } from '../../services/map-flat-popup.service';
 export class AnalogCardComponent implements OnInit {
 
   @Input()
-  public analog?: Analog;
+  public analog?: Row;
 
   @Input()
-  public etalon?: Etalon;
+  public etalon?: EtalonWithAnalogs;
 
   constructor(
     public readonly popups: MapFlatPopupService,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
   }

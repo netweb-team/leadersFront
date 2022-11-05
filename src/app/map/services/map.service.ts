@@ -1,7 +1,7 @@
 import * as L from 'leaflet';
 import { Injectable } from '@angular/core';
 import { lastValueFrom, of, Subscription } from 'rxjs';
-import { Analog, Etalon, Flat } from '../models/flat';
+import { Row, Flat, EtalonWithAnalogs } from '../models/flat';
 import { flatMock } from './flat.mock';
 import { MatIconRegistry } from '@angular/material/icon';
 import { AppInjector } from 'src/app/app/app.module';
@@ -16,7 +16,7 @@ export async function getSvgIconHTMLElement(svgIcon: string): Promise<SVGElement
   return lastValueFrom(matIconRegistry.getNamedSvgIcon(svgIcon));
 }
 
-export async function getFlatMarker(flat: Etalon | Analog, color: string) {
+export async function getFlatMarker(flat: Row, color: string) {
   const mainDiv = document.createElement('div');
   mainDiv.className = `flat-main-div`;
 
@@ -54,7 +54,7 @@ export class MapService {
   public initializeMap(map: L.Map): void {
     this._map = map;
     this.subscriptions.push(
-      this._etalons.etalonsWithAnalogs$.subscribe(flats => flats.map(flat => this.createAnalogMarkers(flat.analogs, flat.etalon, 'red'))),
+      this._etalons.etalonsWithAnalogs$.subscribe(flats => flats.map(flat => this.createAnalogMarkers(flat.analogs, flat, 'red'))),
       this._etalons$.subscribe(flats => this.createEtalonMarkers(flats, 'blue'))
     )
   }
@@ -68,7 +68,7 @@ export class MapService {
   }
 
 
-  private createEtalonMarkers(flats: Etalon[], color: string) {
+  private createEtalonMarkers(flats: Row[], color: string) {
     console.log(flats)
     for (const flat of flats) {
       getFlatMarker(flat, color).then(icon => {
@@ -78,13 +78,13 @@ export class MapService {
             icon,
           }
         )
-        this._layers.set(flat.id, marker);
+        this._layers.set(flat.id.toString(), marker);
         this._map?.addLayer(marker);
       }).catch()
     }
   }
 
-  private createAnalogMarkers(flats: Analog[],  etalon: Etalon, color: string) {
+  private createAnalogMarkers(flats: Row[], etalon: EtalonWithAnalogs, color: string) {
     for (const flat of flats) {
       getFlatMarker(flat, color).then(icon => {
         const marker = new L.Marker(
@@ -93,7 +93,7 @@ export class MapService {
             icon,
           }
         )
-        this._layers.set(flat.id, marker);
+        this._layers.set(flat.id.toString(), marker);
         this._map?.addLayer(marker);
         marker.on('click', () => this._popups.openPopup(flat, etalon));
       }).catch()

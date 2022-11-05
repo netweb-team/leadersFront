@@ -15,20 +15,40 @@ export interface Flat {
   id: string;
 }
 
-export interface Etalon extends PoolsTableRow {
+export interface Row extends PoolsTableRow {
+  ap: number;
   lat: number;
   lng: number;
-  id: string;
-}
-
-export interface Analog extends PoolsTableRow {
-  lat: number;
-  lng: number;
-  id: string;
+  good: number;
+  id: number;
 }
 
 
 export interface EtalonWithAnalogs {
-  etalon: Etalon;
-  analogs: Analog[];
+  pattern: Row;
+  analogs: Row[];
+  coefs: CorrectCoefs[];
+}
+
+export interface Table {
+  id: number;
+  path: string;
+  rows: Row[];
+}
+
+export interface CorrectCoefs {
+  sale: number;
+  floor: number;
+  total: number;
+  kitchen: number;
+  balcony: number;
+  metro: number;
+  state: number;
+}
+
+
+export interface PatternAnalogs {
+  pattern: Row;
+  analogs: Row[];
+  coefs: CorrectCoefs[];
 }

@@ -14,7 +14,7 @@ export class EtalonsService {
   public readonly etalonsWithAnalogs$ = this._etalonsWithAnalogs$.asObservable();
 
   public readonly etalons$ = this._etalonsWithAnalogs$.pipe(
-    map(etalons => etalons.map(etalon => etalon.etalon)),
+    map(etalons => etalons.map(etalon => etalon.pattern)),
   )
 
   public readonly analogs$ = this._etalonsWithAnalogs$.pipe(
