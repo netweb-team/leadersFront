@@ -1,7 +1,7 @@
 <ng-container *ngIf="table$ | async; else noJournal">
   <ng-container *ngIf="(dataSource | async) as data; else noJournal">
     <ng-container *ngIf="data.length !== 0">
-      <table mat-table class="start-table" [dataSource]="data">
+      <table mat-table class="start-table custom-table" [dataSource]="data">
 
         <ng-container matColumnDef="index">
           <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> №</th>
@@ -28,7 +28,7 @@
           <td class="mat-body-2 start-table-floors-column" mat-cell *matCellDef="let element">
             <button mat-icon-button><mat-icon>edit</mat-icon></button></td>
         </ng-container>
-        
+
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
         <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
       </table>

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ResultTableService } from 'src/app/result-table/services/result-table.service';
 
 @Component({
   selector: 'app-archive-page',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ArchivePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public readonly resultTable: ResultTableService,
+  ) { }
 
   ngOnInit(): void {
   }
