@@ -32,7 +32,8 @@ export class AuthInterceptor implements HttpInterceptor {
 
     return next.handle(updatedRequest).pipe(
       map(result => {
-        if ((result as any).status === 403) {
+        console.log(result);
+        if ((result as any).body?.status === 403) {
           this.router.navigate(['auth']).catch(err => {
             // eslint-disable-next-line no-console
             console.error(err);
