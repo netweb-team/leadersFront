@@ -3,7 +3,7 @@
     <div class="top">
       <div class="search"><img src="assets/icons/findIcon.png"><input class="search_input" type="text"
           autocomplete="off"></div>
-      <button class="top_btn blue_bg" color="primary"> Экспортировать </button>
+      <button class="top_btn blue_bg" color="primary" (click)="download()"> Экспортировать </button>
     </div>
 
     <ng-container *ngIf="resultTable.table$ | async as table; else noTable">

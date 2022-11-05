@@ -38,4 +38,16 @@ export class PoolApiService {
   }
 
 
+  public download(tableId: string) {
+
+    const url = `${this.urlPrefix}/${tableId}`;
+
+    let params = new HttpParams();
+
+    params = params.set('download', '1');
+
+    return this.http.get<ApiResponse<Row[]>>(url, {params});
+  }
+
+
 }

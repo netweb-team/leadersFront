@@ -33,5 +33,7 @@ export class ResultTableService {
   public setTable(table: Row[]) {
     this._table$.next(table);
   }
-  
+
+
+
 }
