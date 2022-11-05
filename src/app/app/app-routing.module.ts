@@ -22,6 +22,11 @@ const routes: Routes = [
     loadChildren: () => import('../result-table/result-table.module')
       .then(module => module.ResultTableModule),
   },
+  {
+    path: 'archive',
+    loadChildren: () => import('../archive/archive.module')
+      .then(module => module.ArchiveModule),
+  },
 ];
 
 @NgModule({
