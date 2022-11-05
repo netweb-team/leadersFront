@@ -4,7 +4,7 @@
       <div class="title-table">
         Таблица типовой недвижимости
       </div>
-      <table mat-table class="start-table" [dataSource]="data">
+      <table mat-table class="start-table custom-table" [dataSource]="data">
 
         <ng-container matColumnDef="check">
           <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> </th>
@@ -43,7 +43,7 @@
     </ng-container>
     <ng-template #noRecords>
       <div class="mat-headline">
-        <p>По вашему запросу ничего не найдено</p>
+        <p>Не удалось загрузить данные из таблицы</p>
       </div>
     </ng-template>
   </ng-container>

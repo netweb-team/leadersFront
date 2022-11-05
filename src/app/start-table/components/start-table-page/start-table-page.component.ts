@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { StartTableService } from '../../services/start-table.service';
 
@@ -8,6 +8,10 @@ import { StartTableService } from '../../services/start-table.service';
   styleUrls: ['./start-table-page.component.scss']
 })
 export class StartTablePageComponent implements OnInit {
+
+  @ViewChild('fileUpload')
+  public fileInput!: ElementRef;
+
 
   constructor(
     private readonly _snackBar: MatSnackBar,
@@ -30,4 +34,17 @@ export class StartTablePageComponent implements OnInit {
     }
   }
 
+  public selectFile(event: any) {
+
+    const file:File = event.target.files[0];
+
+    if (file) {
+        const formData = new FormData();
+
+        formData.append("table", file);
+
+        this.onFileSelected(formData);
+    }
+    this.fileInput.nativeElement.value = '';
+}
 }
