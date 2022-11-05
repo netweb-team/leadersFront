@@ -13,7 +13,7 @@ const routes: Routes = [
       .then(module => module.MapModule),
   },
   {
-    path: 'start-table',
+    path: 'start',
     loadChildren: () => import('../start-table/start-table.module')
       .then(module => module.StartTableModule),
   },

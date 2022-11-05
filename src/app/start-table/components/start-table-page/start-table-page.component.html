@@ -1,9 +1,21 @@
+<div class="page">
+  <div class="page_content">
+    <div class="top">
+<!--    <app-file-upload (onFileSelected)="onFileSelected($event)"></app-file-upload>-->
 
-<app-file-upload (onFileSelected)="onFileSelected($event)"></app-file-upload>
-<div>
-  <div>Поиск</div>
-  <button mat-flat-button color="primary"> Импортировать </button>
-  <button mat-flat-button color="warn" (click)="startTable.goToMap()" > Рассчитать пул </button>
+    <div class="search"><img src="assets/icons/findIcon.png"><input class="search_input" type="text" autocomplete="off"></div>
+      <button class="top_btn blue_bg">+ Импортировать </button>
+      <button class="top_btn red_bg" (click)="startTable.goToMap()"> <img src="assets/icons/calcIcon.png"> Рассчитать пул </button>
+    </div>
+
+    <div class="title-top">
+      Расчет #3
+      <img src="assets/icons/penIcon.png">
+    </div>
+
+
+    <app-start-table></app-start-table>
+
+  </div>
+>>>>>>> feat: Design added
 </div>
-<p>расчет</p>
-<app-start-table></app-start-table>
