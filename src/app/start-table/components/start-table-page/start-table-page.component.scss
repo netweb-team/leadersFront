@@ -13,6 +13,9 @@
 
   background: #fff;
   border-radius: 9px;
+
+  display: flex;
+  flex-direction: column;
 }
 
 input[type="submit"] {
@@ -95,6 +98,9 @@ button {
 .top_btn:active:not(:disabled) {
   transform: translateY(2px);
 }
+.top_btn:disabled {
+  opacity: 0.5;
+}
 
 .top {
   width: 100%;
@@ -138,4 +144,15 @@ button {
 
 .title-top img:hover {
   opacity: .6;
+}
+
+.file-input {
+  display: none;
+}
+
+.no-table-template {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
 }

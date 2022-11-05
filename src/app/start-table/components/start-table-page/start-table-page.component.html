@@ -4,18 +4,29 @@
 <!--    <app-file-upload (onFileSelected)="onFileSelected($event)"></app-file-upload>-->
 
     <div class="search"><img src="assets/icons/findIcon.png"><input class="search_input" type="text" autocomplete="off"></div>
-      <button class="top_btn blue_bg">+ Импортировать </button>
-      <button class="top_btn red_bg" (click)="startTable.goToMap()"> <img src="assets/icons/calcIcon.png"> Рассчитать пул </button>
+      <button class="top_btn blue_bg" (click)="fileUpload.click()">+ Импортировать </button>
+      <button class="top_btn red_bg" (click)="startTable.goToMap()"
+       [disabled]="!(startTable.table$ | async)"> <img src="assets/icons/calcIcon.png"> Рассчитать пул </button>
     </div>
 
-    <div class="title-top">
-      Расчет #3
-      <img src="assets/icons/penIcon.png">
-    </div>
+    <ng-container  *ngIf="startTable.table$ | async as table; else noTable">
+      <div class="title-top">
+        Расчет #{{table.id}}
+        <img src="assets/icons/penIcon.png">
+      </div>
 
 
-    <app-start-table></app-start-table>
-
+      <app-start-table></app-start-table>
+    </ng-container>
+    <ng-template #noTable>
+      <h2 class="no-table-template">
+        Чтобы начать работу, загрузите файл.
+      </h2>
+    </ng-template>
   </div>
->>>>>>> feat: Design added
 </div>
+
+<input type="file" class="file-input"
+       (change)="selectFile($event)" #fileUpload
+       accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+
