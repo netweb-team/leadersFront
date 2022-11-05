@@ -1,0 +1,24 @@
+<mat-card>
+
+  <div class="auth-form"  [formGroup]="registerForm">
+    <mat-form-field appearance="fill">
+      <mat-label>Логин</mat-label>
+      <input matInput required formControlName="login">
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Пароль</mat-label>
+      <input matInput type="password" required formControlName="password">
+    </mat-form-field>
+
+    <mat-form-field  appearance="fill">
+      <mat-label>Повторение пароля</mat-label>
+      <input matInput type="password"  required formControlName="repeatPassword">
+    </mat-form-field>
+
+
+    <button mat-button (click)="register()">Зарегистрироваться</button>
+
+
+    <a [routerLink]="'/auth'">Войти</a>
+  </div>
+</mat-card>
