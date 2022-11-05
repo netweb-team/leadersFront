@@ -50,7 +50,12 @@ export class StartTableService {
   }
 
   public download() {
-    return lastValueFrom(this._poolsApi.download(this.getTableId()))
+
+    const tableId = this.getTableId();
+    if (!tableId) {
+      return;
+    }
+    return lastValueFrom(this._poolsApi.download(tableId.toString()))
   }
 
 }
