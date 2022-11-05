@@ -1,5 +1,61 @@
 :host {
   table {
     width: 100%;
+    border-collapse: collapse;
+    table-layout: fixed;
+  }
+  .title-table {
+    margin-top: 18px;
+    font-size: 12px;
+    color: #ababab;
+    font-style: italic;
+    width: 100%;
+  }
+  th {
+    font-size: 14px;
+    padding: 13px;
+    text-align: center;
+    background-color: #f2f2f2;
+    color: #323232;
+  }
+  td {
+    font-size: 14px;
+    padding: 13px;
+    text-align: center;
+    color: #323232;
+    line-height: 21px;
+  }
+  td a {
+    width: 100%;
+    display: block;
+    color: #323232;
+
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+  }
+  td a:hover {
+    color: #1021f9;
+  }
+  table th[disabled] {
+    cursor: not-allowed;
+    pointer-events: none;
+  }
+  table tr:not(.checked):nth-child(odd) {
+    background: #f8f8f8;
+  }
+  table tr.checked {
+    border-color: #191933;
+    background: #e0e0e0;
+  }
+  table tr {
+    transition: background .3s, border-color .3s;
+    border-color: #FFFFFF;
+    border-left: 3px solid #FFFFFF;
+  }
+  thead {
+    position: sticky;
+    top: 0;
+    z-index: 1;
   }
 }
