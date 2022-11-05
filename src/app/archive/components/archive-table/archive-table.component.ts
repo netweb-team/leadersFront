@@ -14,7 +14,7 @@ export class ArchiveTableComponent {
   public displayedColumns = [ 'index', 'name', 'count', 'edit'];
 
   public table$ = this.resultTable.table$.pipe(
-    map(table => table?.table),
+    // map(table => table?.table), 
   )
 
   public dataSource: Observable<Array<PoolsTableRow & { index: number }>> = this.table$.pipe(
