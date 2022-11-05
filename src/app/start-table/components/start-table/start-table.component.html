@@ -1,52 +1,55 @@
-<ng-container *ngIf="(dataSource | async) as data; else noJournal">
-  <ng-container *ngIf="data.length !== 0">
-          <table mat-table class="start-table" [dataSource]="data">
+<ng-container *ngIf="table$ | async; else noJournal">
+  <ng-container *ngIf="(dataSource | async) as data; else noJournal">
+    <ng-container *ngIf="data.length !== 0">
+      <table mat-table class="start-table" [dataSource]="data">
 
-            <ng-container matColumnDef="check">
-              <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> </th>
-              <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
-                  <mat-checkbox (change)="startTable.checklistSelection.toggle(element.index)"></mat-checkbox> </td>
-          </ng-container>
+        <ng-container matColumnDef="check">
+          <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> </th>
+          <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
+            <mat-checkbox (change)="startTable.checklistSelection.toggle(element.index + 1)"></mat-checkbox>
+          </td>
+        </ng-container>
 
-              <ng-container matColumnDef="index">
-                  <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> №</th>
-                  <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
-                      {{ element.index }} </td>
-              </ng-container>
+        <ng-container matColumnDef="index">
+          <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> №</th>
+          <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
+            {{ element.index }} </td>
+        </ng-container>
 
-              <ng-container matColumnDef="address">
-                  <th class="mat-body-2 start-table-address-column" mat-header-cell *matHeaderCellDef> Адрес </th>
-                  <td class="mat-body-2 start-table-address-column" mat-cell *matCellDef="let element">
-                      {{ element.a }}
-                  </td>
-              </ng-container>
+        <ng-container matColumnDef="address">
+          <th class="mat-body-2 start-table-address-column" mat-header-cell *matHeaderCellDef> Адрес </th>
+          <td class="mat-body-2 start-table-address-column" mat-cell *matCellDef="let element">
+            {{ element.a }}
+          </td>
+        </ng-container>
 
-              <ng-container matColumnDef="rooms">
-                  <th class="mat-body-2 start-table-rooms-column" mat-header-cell *matHeaderCellDef> Комнат </th>
-                  <td class="mat-body-2 start-table-rooms-column" mat-cell *matCellDef="let element">
-                      {{element.r}} </td>
-              </ng-container>
+        <ng-container matColumnDef="rooms">
+          <th class="mat-body-2 start-table-rooms-column" mat-header-cell *matHeaderCellDef> Комнат </th>
+          <td class="mat-body-2 start-table-rooms-column" mat-cell *matCellDef="let element">
+            {{element.r}} </td>
+        </ng-container>
 
 
-              <ng-container matColumnDef="floors">
-                <th class="mat-body-2 start-table-floors-column" mat-header-cell *matHeaderCellDef> Этажность </th>
-                <td class="mat-body-2 start-table-floors-column" mat-cell *matCellDef="let element">
-                    {{element.cf}} </td>
-            </ng-container>
+        <ng-container matColumnDef="floors">
+          <th class="mat-body-2 start-table-floors-column" mat-header-cell *matHeaderCellDef> Этажность </th>
+          <td class="mat-body-2 start-table-floors-column" mat-cell *matCellDef="let element">
+            {{element.cf}} </td>
+        </ng-container>
 
-              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
-              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
-          </table>
-  </ng-container>
-  <ng-template #noRecords>
+        <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+        <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+      </table>
+    </ng-container>
+    <ng-template #noRecords>
       <div class="mat-headline">
-          <p>По вашему запросу ничего не найдено</p>
+        <p>По вашему запросу ничего не найдено</p>
       </div>
-  </ng-template>
+    </ng-template>
+  </ng-container>
 </ng-container>
 <ng-template #noJournal>
   <div class=" mat-headline">
-      <p>Для </p>
-      <p>запросите </p>
+    <p>Загрузите файл
+    </p>
   </div>
 </ng-template>

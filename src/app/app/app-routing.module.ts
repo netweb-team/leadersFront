@@ -8,7 +8,7 @@ const routes: Routes = [
       .then(module => module.AuthModule),
   },
   {
-    path: 'map',
+    path: 'map/:tableId',
     loadChildren: () => import('../map/map.module')
       .then(module => module.MapModule),
   },
