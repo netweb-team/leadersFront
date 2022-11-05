@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ResultTableService } from '../../services/result-table.service';
 
 @Component({
   selector: 'app-result-table-page',
@@ -7,7 +8,9 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ResultTablePageComponent implements OnInit {
 
-  constructor() { }
+  constructor(
+    public readonly resultTable: ResultTableService, 
+  ) { }
 
   ngOnInit(): void {
   }
