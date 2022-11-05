@@ -5,7 +5,7 @@ import { PoolMock } from 'src/app/core/models/pool.mock';
 import { Flat } from '../../models/start-table';
 import { StartTableService } from '../../services/start-table.service';
 
-function isNotNill<T>(arg: T | null | undefined): arg is T {
+export function isNotNill<T>(arg: T | null | undefined): arg is T {
   return arg !== null && arg !== undefined;
 }
 
