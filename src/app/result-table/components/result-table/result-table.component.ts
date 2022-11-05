@@ -14,7 +14,6 @@ export class ResultTableComponent {
   public displayedColumns = [ 'index', 'address', 'rooms', 'floors', 'price', 'edit'];
 
   public table$ = this.resultTable.table$.pipe(
-    map(table => table?.table),
   )
 
   public dataSource: Observable<Array<PoolsTableRow & { index: number }>> = this.table$.pipe(

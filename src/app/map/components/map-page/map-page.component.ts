@@ -29,4 +29,9 @@ export class MapPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public calcResult() {
+    const tableId = this._route.snapshot.params.tableId;
+    this.etalons.calcResult(tableId);
+  }
+
 }

@@ -5,6 +5,7 @@ import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { PoolsTable } from 'src/app/core/models/pool';
 import { PoolMock } from 'src/app/core/models/pool.mock';
 import { PoolApiService } from 'src/app/core/services/api/pool-api.service';
+import { Row } from 'src/app/map/models/flat';
 
 @Injectable({
   providedIn: 'root'
@@ -23,17 +24,14 @@ export class ResultTableService {
   public checklistSelection = new SelectionModel<string>(true);
 
 
-  private readonly _table$ = new BehaviorSubject<PoolsTable | null>({table: [...PoolMock]});
+  private readonly _table$ = new BehaviorSubject<Row[] | null>([]);
 
 
   public table$ = this._table$.asObservable();
 
 
-  public setTable(table: PoolsTable) {
+  public setTable(table: Row[]) {
     this._table$.next(table);
   }
-
-  public getTableId() {
-    return this._table$.value?.id;
-  }
+  
 }
