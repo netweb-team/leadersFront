@@ -1,14 +1,19 @@
-<p>auth-page works!</p>
 <mat-card>
-  <form class="auth-form">
+
+  <div class="auth-form" [formGroup]="authForm">
     <mat-form-field appearance="fill">
       <mat-label>Логин</mat-label>
-      <input matInput placeholder="Login">
+      <input matInput required formControlName="login">
     </mat-form-field>
     <mat-form-field appearance="fill">
       <mat-label>Пароль</mat-label>
-      <input matInput placeholder="Password" type="password">
+      <input matInput type="password" required formControlName="password">
     </mat-form-field>
-    <button mat-button>Войти</button>
-  </form>
+    
+    <button mat-button (click)="login()">
+      Войти
+    </button>
+
+    <a [routerLink]="'/auth/signup'">Зарегистрироваться</a>
+  </div>
 </mat-card>

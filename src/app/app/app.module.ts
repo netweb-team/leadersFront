@@ -8,7 +8,8 @@ import { AuthModule } from 'src/app/auth/auth.module';
 import { LeafletModule } from '@asymmetrik/ngx-leaflet';
 import { CoreModule } from '../core/core.module';
 import { StartTableModule } from '../start-table/start-table.module';
-import { HttpClientModule } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from '../auth/interceptors/auth.interceptor';
 
 export let AppInjector: Injector;
 @NgModule({
@@ -25,7 +26,13 @@ export let AppInjector: Injector;
     StartTableModule,
     HttpClientModule,
   ],
-  providers: [],
+  providers: [
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthInterceptor,
+      multi: true,
+    },
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule {

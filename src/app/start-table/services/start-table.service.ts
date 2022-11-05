@@ -48,4 +48,14 @@ export class StartTableService {
     }
     this._router.navigate(['/map', tableId], { queryParams: { pattern: patternId } });
   }
+
+  public download() {
+
+    const tableId = this.getTableId();
+    if (!tableId) {
+      return;
+    }
+    return lastValueFrom(this._poolsApi.download(tableId.toString()))
+  }
+
 }

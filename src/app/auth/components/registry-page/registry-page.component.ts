@@ -6,15 +6,16 @@ import { lastValueFrom } from 'rxjs';
 import { AuthService } from '../../services/auth.service';
 
 @Component({
-  selector: 'app-auth-page',
-  templateUrl: './auth-page.component.html',
-  styleUrls: ['./auth-page.component.scss']
+  selector: 'app-registry-page',
+  templateUrl: './registry-page.component.html',
+  styleUrls: ['./registry-page.component.scss']
 })
-export class AuthPageComponent implements OnInit {
+export class RegistryPageComponent implements OnInit {
 
-  public authForm = this.fb.group({
+  public registerForm = this.fb.group({
     login: '',
     password: '',
+    repeatPassword: '',
   })
 
   constructor(
@@ -27,20 +28,26 @@ export class AuthPageComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public async login() {
-    if (!this.authForm.valid) return;
+  public async register() {
+    if (!this.registerForm.valid) return;
 
-    const formValue = this.authForm.value;
-    console.log(this.authForm.valid, this.authForm.value);
+    const formValue = this.registerForm.value;
+
+    if (formValue.password !== formValue.repeatPassword) {
+      this.snackBar.open('Пароли не совпадают!');
+    }
     try {
-      const session = await lastValueFrom(this.auth.login(formValue.login, formValue.password));
-      if (session.status === 201) {
+      const result = await lastValueFrom(this.auth.signup(formValue.login, formValue.password))
+      if (result.status === 201) {
         this.router.navigateByUrl('/start');
-      } else if (session.status === 400) {
+      } else if (result.status === 400) {
         this.snackBar.open('При авторизации произошла ошибка. Поверьте правильность заполнения полей.')
       }
-    } catch {
-      this.snackBar.open('Не удалось войти. Проверьте праивльность заполнения полей.')
+
+    } catch (e: unknown) {
+      if (e instanceof Error) {
+        this.snackBar.open(e.message);
+      }
     }
   }
 }

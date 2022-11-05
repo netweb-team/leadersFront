@@ -4,5 +4,6 @@
     <app-etalon-card *ngFor="let etalon of etalons.etalonsWithAnalogs$ | async" [etalon]="etalon">
     </app-etalon-card>
   </div>
+  <button mat-flat-button (click)="calcResult()">Рассчитать</button>
 </div>
 <app-map></app-map>

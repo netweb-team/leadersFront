@@ -1,36 +1,37 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
+import { ApiResponse } from '../../models/pool';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class AuthService {
+export class AuthApiService {
 
-  private urlPrefix = '/api/v1/auth'
+  private urlPrefix = `${environment.apiOrigin}/api`;
 
   constructor(
-      private readonly http: HttpClient,
-  ) { }
+    private readonly http: HttpClient,
+  ) {}
 
 
-  public postSessions(data: any): Observable<any> {
-    const url = `${this.urlPrefix}`;
+  public auth(login: string, password: string): Observable<ApiResponse<null>> {
+    const url = `${this.urlPrefix}/auth`;
 
-    return this.http.post<any>(url, '');
+    return this.http.post<ApiResponse<null>>(url, {login, password}, {withCredentials: true});
   }
 
-  public getSession(data: any): Observable<any> {
-    const url = `${this.urlPrefix}`;
+  public signup(login: string, password: string): Observable<ApiResponse<null>> {
+    const url = `${this.urlPrefix}/signup`;
 
-    return this.http.get<any>(url);
+    return this.http.post<ApiResponse<null>>(url, {login, password}, {withCredentials: true});
   }
 
-  public deleteSession(data: any): Observable<any> {
-    const url = `${this.urlPrefix}`;
-
-    return this.http.delete<any>(url);
+  public logout() {
+    const url = `${this.urlPrefix}/auth`;
+    return this.http.delete<ApiResponse<null>>(url);
   }
 
 }
