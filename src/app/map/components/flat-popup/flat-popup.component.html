@@ -14,7 +14,7 @@
       <ng-container matColumnDef="etalon">
         <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> Эталон</th>
         <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
-          {{ getParamValue(etalon, element)}} </td>
+          {{ getParamValue(etalon.pattern, element)}} </td>
       </ng-container>
 
       <ng-container matColumnDef="analog">
@@ -27,7 +27,11 @@
       <ng-container matColumnDef="coef">
         <th class="mat-body-2 start-table-rooms-column" mat-header-cell *matHeaderCellDef> Коэффициент </th>
         <td class="mat-body-2 start-table-rooms-column" mat-cell *matCellDef="let element">
-          {{getCoefValue(null, element)}} </td>
+          <mat-form-field class="example-full-width" appearance="outline" *ngIf="getFormControl(element) as control">
+            <!-- <mat-label>Коэффициент</mat-label> -->
+            <input matInput [formControl]="control">
+          </mat-form-field>
+        </td>
       </ng-container>
 
       <tr mat-header-row *matHeaderRowDef="columns; sticky: true"></tr>

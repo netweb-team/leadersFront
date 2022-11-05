@@ -1,4 +1,4 @@
-import { EtalonWithAnalogs, Flat } from "../models/flat";
+import { EtalonWithAnalogs, Flat, Row } from "../models/flat";
 
 export const flatMock: Flat[] = [{
   lat: 55.6573,
@@ -35,7 +35,7 @@ export const flatMock: Flat[] = [{
 
 
 
-export const analogs = [
+export const analogs: Row[] = [
   {
     a: 'Address 6',
     r: 10,
@@ -51,7 +51,9 @@ export const analogs = [
     p: 150,
     lat: 55.5532434,
     lng: 37.67324234,
-    id: '12135'
+    id: 12135,
+    ap: 2213,
+    good:0,
   },
   {
     a: 'Address 5',
@@ -68,12 +70,14 @@ export const analogs = [
     p: 158,
     lat: 55.55234,
     lng: 37.6712312,
-    id: '12134'
+    id: 12134,
+    ap: 2213,
+    good:0,
   },
 ]
 
 export const EtalonMock: EtalonWithAnalogs = {
-  etalon: {
+  pattern: {
     a: 'Address 1',
     r: 2,
     s: 'Segment',
@@ -88,7 +92,27 @@ export const EtalonMock: EtalonWithAnalogs = {
     p: 150,
     lat: 55.55,
     lng: 37.67,
-    id: '1213'
+    id: 1213,
+    ap: 2213,
+    good:0,
   },
-  analogs: analogs
+  analogs: analogs,
+  coefs: [{
+    sale: 1,
+    floor: 2,
+    total: 3,
+    kitchen: 4,
+    balcony: 5,
+    metro: 6,
+    state: 7,
+  },
+  {
+    sale: 2,
+    floor: 4,
+    total: 5,
+    kitchen: 6,
+    balcony: 7,
+    metro: 1,
+    state: 2,
+  }],
 }

@@ -1,10 +1,10 @@
 <h1 class="etalon-title">Эталон 1.</h1>
-<app-flat-info [flatInfo]="etalon?.etalon"></app-flat-info>
+<app-flat-info [flatInfo]="etalon?.pattern"></app-flat-info>
 <div class="etalon-analogs" *ngIf="etalon">
   <div class="etalon-analogs__title">Аналоги</div>
   <div class="etalon-analogs__list" >
     <div *ngFor="let analog of etalon?.analogs">
-      <mat-checkbox></mat-checkbox><app-analog-card [analog]="analog" [etalon]="etalon.etalon"></app-analog-card>
+      <mat-checkbox></mat-checkbox><app-analog-card [analog]="analog" [etalon]="etalon"></app-analog-card>
     </div>
   </div>
 </div>
