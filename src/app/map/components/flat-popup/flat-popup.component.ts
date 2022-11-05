@@ -3,6 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { map } from 'rxjs';
 import { PoolsTableRow } from 'src/app/core/models/pool';
+import { CorrectCoefs } from '../../models/flat';
 import { MapFlatPopupService } from '../../services/map-flat-popup.service';
 import { MapService } from '../../services/map.service';
 
@@ -15,10 +16,6 @@ export const coefNames = new Map<string, string>([
 export interface CompareTableRow {
   type: string;
 }
-
-
-
-
 
 
 
@@ -89,4 +86,8 @@ export class FlatPopupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public save() {
+    const coefs = this.form.value as CorrectCoefs;
+    console.log(coefs);
+  }
 }
