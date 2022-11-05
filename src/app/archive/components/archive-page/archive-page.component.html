@@ -1,0 +1,23 @@
+<div class="page">
+  <div class="page_content">
+    <div class="top">
+
+      <div class="search"><img src="assets/icons/findIcon.png"><input class="search_input" type="text"
+          autocomplete="off"></div>
+    </div>
+
+    <ng-container *ngIf="resultTable.table$ | async as table; else noTable">
+      <div class="title-top">
+        Архив
+      </div>
+
+
+      <app-archive-table></app-archive-table>
+    </ng-container>
+    <ng-template #noTable>
+      <h2 class="no-table-template">
+        Нет данных.
+      </h2>
+    </ng-template>
+  </div>
+</div>

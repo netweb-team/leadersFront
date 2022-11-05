@@ -28,6 +28,11 @@ const routes: Routes = [
       .then(module => module.ResultTableModule),
     canActivate: [AuthGuard],
   },
+  {
+    path: 'archive',
+    loadChildren: () => import('../archive/archive.module')
+      .then(module => module.ArchiveModule),
+  },
 ];
 
 @NgModule({
