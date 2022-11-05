@@ -16,10 +16,10 @@ export interface Flat {
 }
 
 export interface Row extends PoolsTableRow {
-  ap: number;
+  ap?: number;
   lat: number;
   lng: number;
-  good: number;
+  good?: number;
   id: number;
 }
 

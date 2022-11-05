@@ -60,21 +60,17 @@ input[type="checkbox"]:hover:not(:disabled) {
   border-collapse: collapse;
   table-layout: fixed;
 
-  .title-table {
-    margin-top: 18px;
-    font-size: 12px;
-    color: #ababab;
-    font-style: italic;
-    width: 100%;
+  th.mat-header-cell {
+    text-align: center;
   }
-  th {
+  th, th.mat-header-cell {
     font-size: 14px;
     padding: 13px;
     text-align: center;
     background-color: #f2f2f2;
     color: #323232;
   }
-  td {
+  td, td.mat-cell {
     font-size: 14px;
     padding: 13px;
     text-align: center;
