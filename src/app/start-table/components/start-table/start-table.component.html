@@ -1,15 +1,17 @@
 <ng-container *ngIf="table$ | async; else noJournal">
   <ng-container *ngIf="(dataSource | async) as data; else noJournal">
     <ng-container *ngIf="data.length !== 0">
-      <table mat-table class="start-table" [dataSource]="data">
+      <div class="title-table">
+        Таблица типовой недвижимости
+      </div>
+      <table mat-table class="start-table custom-table" [dataSource]="data">
 
         <ng-container matColumnDef="check">
           <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> </th>
           <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
-            <mat-checkbox (change)="startTable.checklistSelection.toggle(element.index + 1)"></mat-checkbox>
+            <input type="checkbox" (change)="startTable.checklistSelection.toggle(element.index+1)"/>
           </td>
         </ng-container>
-
         <ng-container matColumnDef="index">
           <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> №</th>
           <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
@@ -29,7 +31,6 @@
             {{element.r}} </td>
         </ng-container>
 
-
         <ng-container matColumnDef="floors">
           <th class="mat-body-2 start-table-floors-column" mat-header-cell *matHeaderCellDef> Этажность </th>
           <td class="mat-body-2 start-table-floors-column" mat-cell *matCellDef="let element">
@@ -42,7 +43,7 @@
     </ng-container>
     <ng-template #noRecords>
       <div class="mat-headline">
-        <p>По вашему запросу ничего не найдено</p>
+        <p>Не удалось загрузить данные из таблицы</p>
       </div>
     </ng-template>
   </ng-container>
