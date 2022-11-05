@@ -3,8 +3,9 @@ export interface ApiResponse<T> {
   body: T;
 }
 
-export interface PoolsResponse {
-  path: string;
+export interface PoolsTable {
+  id?: number;
+  path?: string;
   table: PoolsTableRow[];
 }
 

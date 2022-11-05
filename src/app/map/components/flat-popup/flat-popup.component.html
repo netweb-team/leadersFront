@@ -29,7 +29,7 @@
         <td class="mat-body-2 start-table-rooms-column" mat-cell *matCellDef="let element">
           <mat-form-field class="example-full-width" appearance="outline" *ngIf="getFormControl(element) as control">
             <!-- <mat-label>Коэффициент</mat-label> -->
-            <input matInput [formControl]="control">
+            <input matInput type="number" [formControl]="control">
           </mat-form-field>
         </td>
       </ng-container>
@@ -41,3 +41,5 @@
   </ng-container>
 
 </ng-container>
+
+<button mat-flat-button> Применить </button>

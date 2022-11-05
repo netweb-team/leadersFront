@@ -3,21 +3,19 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
 import { map } from 'rxjs';
 import { PoolsTableRow } from 'src/app/core/models/pool';
+import { CorrectCoefs } from '../../models/flat';
 import { MapFlatPopupService } from '../../services/map-flat-popup.service';
 import { MapService } from '../../services/map.service';
 
 
 export const coefNames = new Map<string, string>([
   ['k', 'Кухня'],
-  ['f', 'Этажность'],
+  ['cf', 'Этаж'],
+  ['m', 'Метро']
 ])
 export interface CompareTableRow {
   type: string;
 }
-
-
-
-
 
 
 
@@ -31,7 +29,7 @@ export class FlatPopupComponent implements OnInit {
 
   public columns = ['param', 'etalon', 'analog', 'coef'];
 
-  public data = ['k', 'f', 'm'];
+  public data = ['k', 'cf', 'm'];
 
   public form = this._fb.group({
     sale: 0,
@@ -58,7 +56,7 @@ export class FlatPopupComponent implements OnInit {
   public getFormControl(type: string) {
     switch (type) {
       case 'k': return this.form.controls.kitchen as FormControl;
-      case 'f': return this.form.controls.floor as FormControl;
+      case 'cf': return this.form.controls.floor as FormControl;
       case 'm': return this.form.controls.metro as FormControl;
     }
     return null;
@@ -88,4 +86,8 @@ export class FlatPopupComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  public save() {
+    const coefs = this.form.value as CorrectCoefs;
+    console.log(coefs);
+  }
 }

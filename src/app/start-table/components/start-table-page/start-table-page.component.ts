@@ -11,7 +11,7 @@ export class StartTablePageComponent implements OnInit {
 
   constructor(
     private readonly _snackBar: MatSnackBar,
-    private readonly _startTable: StartTableService,
+    public readonly startTable: StartTableService,
   ) {}
 
   ngOnInit(): void {
@@ -20,10 +20,10 @@ export class StartTablePageComponent implements OnInit {
 
   public async onFileSelected(formData: FormData) {
     try {
-      const resp = await this._startTable.uploadPool(formData);
+      const resp = await this.startTable.uploadPool(formData);
       console.log(resp);
-      if (resp.status === 201 && resp.body.table) {
-        this._startTable.setTable(resp.body.table);
+      if (resp.status === 201 && resp.body) {
+        this.startTable.setTable(resp.body);
       }
     } catch {
       this._snackBar.open('Произошла непредвиденная ошибка')
