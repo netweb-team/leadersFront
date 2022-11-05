@@ -20,13 +20,13 @@ export class AuthApiService {
   public auth(login: string, password: string): Observable<ApiResponse<null>> {
     const url = `${this.urlPrefix}/auth`;
 
-    return this.http.post<ApiResponse<null>>(url, {login, password});
+    return this.http.post<ApiResponse<null>>(url, {login, password}, {withCredentials: true});
   }
 
   public signup(login: string, password: string): Observable<ApiResponse<null>> {
     const url = `${this.urlPrefix}/signup`;
 
-    return this.http.post<ApiResponse<null>>(url, {login, password});
+    return this.http.post<ApiResponse<null>>(url, {login, password}, {withCredentials: true});
   }
 
   public logout() {
