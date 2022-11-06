@@ -9,11 +9,15 @@ import {
 } from '@angular/common/http';
 import { catchError, map, Observable, throwError } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthService } from '../services/auth.service';
 
 @Injectable()
 export class AuthInterceptor implements HttpInterceptor {
 
-  public constructor(private readonly router: Router) {}
+  public constructor(
+    private readonly router: Router,
+    private readonly auth: AuthService,
+    ) {}
 
   public intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
 
@@ -43,7 +47,7 @@ export class AuthInterceptor implements HttpInterceptor {
       }),
       catchError((error: HttpErrorResponse) => {
         if (error.status === HttpStatusCode.Unauthorized) {
-          // this.auth.resetSession();
+          this.auth.logout();
           this.router.navigate(['auth']).catch(err => {
             // eslint-disable-next-line no-console
             console.error(err);

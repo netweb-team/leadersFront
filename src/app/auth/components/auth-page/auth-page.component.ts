@@ -36,6 +36,7 @@ export class AuthPageComponent implements OnInit {
       const session = await lastValueFrom(this.auth.login(formValue.login, formValue.password));
       if (session.status === 201) {
         this.router.navigateByUrl('/start');
+        this.auth.setAuth();
       } else if (session.status === 400) {
         this.snackBar.open('При авторизации произошла ошибка. Поверьте правильность заполнения полей.')
       }

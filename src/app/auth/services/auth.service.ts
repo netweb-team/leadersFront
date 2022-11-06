@@ -27,6 +27,13 @@ export class AuthService {
     return this._isAuth.value;
   }
 
+  public setAuth() {
+    this._isAuth.next(true);
+  }
+
+  public logout() {
+    this._isAuth.next(false);
+  }
 
   private getAuthCookie() {
     const cookieArray = document.cookie?.match(new RegExp('(^| )' + 'session' + '=([^;]+)'));

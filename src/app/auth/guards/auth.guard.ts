@@ -14,9 +14,9 @@ export class AuthGuard implements CanActivate {
   ) { }
 
   public canActivate() {
-    if (!environment.production) {
-      return true;
-    }
+    // if (!environment.production) {
+    //   return true;
+    // }
     if (this.auth.isAuth()) {
       return true;
     } else {

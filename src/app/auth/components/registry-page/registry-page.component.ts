@@ -40,6 +40,7 @@ export class RegistryPageComponent implements OnInit {
       const result = await lastValueFrom(this.auth.signup(formValue.login, formValue.password))
       if (result.status === 201) {
         this.router.navigateByUrl('/start');
+        this.auth.setAuth();
       } else if (result.status === 400) {
         this.snackBar.open('При авторизации произошла ошибка. Поверьте правильность заполнения полей.')
       }
