@@ -6,6 +6,7 @@ import { EtalonMock } from './flat.mock';
 import { PoolApiService } from 'src/app/core/services/api/pool-api.service';
 import { ResultTableService } from 'src/app/result-table/services/result-table.service';
 import { lastIndexOf } from 'lodash';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -31,6 +32,7 @@ export class EtalonsService {
   constructor(
     private readonly _poolsApi: PoolApiService,
     private readonly _resultTable: ResultTableService,
+    private readonly _router: Router,
   ) {}
 
   public async findAnalogs(tableId: string, ids: string[]) {
@@ -45,6 +47,7 @@ export class EtalonsService {
     try {
       const result = await lastValueFrom(this._poolsApi.calcResult(tableId.toString()));
       this._resultTable.setTable(result.body)
+      this._router.navigate(['result'])
     } catch {
 
     }

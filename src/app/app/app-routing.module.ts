@@ -23,7 +23,7 @@ const routes: Routes = [
   canActivate: [AuthGuard],
 },
 {
-  path: 'result-table',
+  path: 'result',
   loadChildren: () => import('../result-table/result-table.module')
     .then(module => module.ResultTableModule),
   canActivate: [AuthGuard],
