@@ -1,9 +1,11 @@
 import { ChangeDetectionStrategy } from '@angular/core';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { map } from 'rxjs';
 import { PoolsTableRow } from 'src/app/core/models/pool';
 import { CorrectCoefs } from '../../models/flat';
+import { EtalonsService } from '../../services/etalons.service';
 import { MapFlatPopupService } from '../../services/map-flat-popup.service';
 import { MapService } from '../../services/map.service';
 
@@ -74,6 +76,8 @@ export class FlatPopupComponent implements OnInit {
     public readonly _popupData: MapFlatPopupService,
     private readonly _fb: FormBuilder,
     public readonly _map: MapService,
+    private readonly _etalon: EtalonsService,
+    private readonly _route: ActivatedRoute,
   ) {
     this._popupData.popupFlatData$.subscribe(flatData => {
       if (flatData) {
@@ -86,8 +90,12 @@ export class FlatPopupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public save() {
+  public save(flatId: number) {
+    if (!this.form.valid) {
+      return;
+    }
     const coefs = this.form.value as CorrectCoefs;
-    console.log(coefs);
+    const tableId = this._route.snapshot.params.tableId;
+    this._etalon.changeCorrections(tableId, coefs as any, flatId);
   }
 }

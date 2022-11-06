@@ -49,5 +49,31 @@ export class PoolApiService {
     return this.http.get<ApiResponse<Row[]>>(url, {params});
   }
 
+  public changeAnalogState(tableId: string, analogId: string, enable: 'on' | 'off') {
+
+    const url = `${this.urlPrefix}/${tableId}`;
+
+    let params = new HttpParams();
+
+    params = params.set('analog', '1');
+
+    return this.http.put<ApiResponse<number>>(url, {
+      analog_id: analogId,
+      enable,
+    } ,{params});
+  }
+
+
+
+  public changeCorrectionsState(tableId: string, body: { action: 'on' | 'off' | 'change', flat_id: number, corrections: { [key: string] : number}}) {
+
+    const url = `${this.urlPrefix}/${tableId}`;
+
+    let params = new HttpParams();
+
+    params = params.set('correct', '1');
+
+    return this.http.put<ApiResponse<number>>(url, body,{params});
+  }
 
 }
