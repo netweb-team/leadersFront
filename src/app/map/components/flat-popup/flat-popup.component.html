@@ -1,33 +1,32 @@
-<p>flat-popup works!</p>
 <ng-container *ngIf="analog$ | async as analog">
   <ng-container *ngIf="etalon$ | async as etalon">
 
     <table mat-table class="start-table" [dataSource]="data">
 
       <ng-container matColumnDef="param">
-        <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef>Параметр</th>
+        <th class="mat-body-2 start-table-index-column title" mat-header-cell *matHeaderCellDef>Параметр</th>
         <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
           {{getCoefNameByType(element)}}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="etalon">
-        <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> Эталон</th>
+        <th class="mat-body-2 start-table-index-column title" mat-header-cell *matHeaderCellDef> Эталон</th>
         <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
           {{ getParamValue(etalon.pattern, element)}} </td>
       </ng-container>
 
       <ng-container matColumnDef="analog">
-        <th class="mat-body-2 start-table-address-column" mat-header-cell *matHeaderCellDef> Аналог</th>
+        <th class="mat-body-2 start-table-address-column title" mat-header-cell *matHeaderCellDef> Аналог</th>
         <td class="mat-body-2 start-table-address-column" mat-cell *matCellDef="let element">
           {{ getParamValue(analog, element)}}
         </td>
       </ng-container>
 
       <ng-container matColumnDef="coef">
-        <th class="mat-body-2 start-table-rooms-column" mat-header-cell *matHeaderCellDef> Коэффициент </th>
+        <th class="mat-body-2 start-table-rooms-column title" mat-header-cell *matHeaderCellDef> Коэффициент </th>
         <td class="mat-body-2 start-table-rooms-column" mat-cell *matCellDef="let element">
-          <mat-form-field class="example-full-width" appearance="outline" *ngIf="getFormControl(element) as control">
+          <mat-form-field class="example-full-width tuning" appearance="outline" *ngIf="getFormControl(element) as control">
             <!-- <mat-label>Коэффициент</mat-label> -->
             <input matInput type="number" [formControl]="control">
           </mat-form-field>
@@ -42,4 +41,4 @@
 
 </ng-container>
 
-<button mat-flat-button *ngIf="analog$ | async as analog" (click)="save(analog.id)"> Применить </button>
+<button mat-flat-button *ngIf="analog$ | async as analog" (click)="save(analog.id)" class="red_btn"> Применить </button>

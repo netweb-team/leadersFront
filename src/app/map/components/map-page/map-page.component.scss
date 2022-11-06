@@ -15,6 +15,20 @@
       gap: 10px;
     }
   }
+  .blue-but {
+    color: white;
+    background: #005FF9;
+  }
+
+  .blue-but:hover:not(:disabled) {
+    color: white;
+    background: #1021f9;
+  }
+
+  .title {
+    margin: auto;
+    margin-top: 10px;
+  }
 
   app-map {
     width: 70%;
