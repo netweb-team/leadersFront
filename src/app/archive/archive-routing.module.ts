@@ -5,7 +5,7 @@ import { ArchivePageComponent } from "./components/archive-page/archive-page.com
 
 const routes: Routes = [
   {path: '', component: ArchivePageComponent},
-  {path: '/:poolId', component: ArchiveOnePageComponent}
+  {path: ':poolId', component: ArchiveOnePageComponent}
 ];
 
 @NgModule({

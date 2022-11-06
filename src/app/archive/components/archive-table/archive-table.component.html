@@ -32,7 +32,12 @@
         <ng-container matColumnDef="edit">
           <th class="mat-body-2 start-table-floors-column" mat-header-cell *matHeaderCellDef></th>
           <td class="mat-body-2 start-table-floors-column" mat-cell *matCellDef="let element">
-            <button mat-icon-button><mat-icon>edit</mat-icon></button></td>
+            <!-- <button mat-icon-button><mat-icon>edit</mat-icon></button></td> -->
+            <button [routerLink]="['/archive', element.id]"> Перейти
+              <mat-icon>
+              arrow_forward_ios
+              </mat-icon>
+            </button>
         </ng-container>
 
         <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>

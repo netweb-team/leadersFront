@@ -1,9 +1,15 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+}
 .page {
   max-width: 980px;
   margin: 40px auto 40px auto;
   padding: 2px;
 
-  background: #EFEFEF;
+  background: #efefef;
   border-radius: 9px;
 }
 .page_content {
@@ -51,8 +57,8 @@ input[type="text"] {
   height: 35px;
   box-sizing: border-box;
 
-  background: #FFFFFF;
-  border: 2px solid #EFEFEF;
+  background: #ffffff;
+  border: 2px solid #efefef;
   border-radius: 7px;
 
   box-shadow: 0 5px 4px rgba(0, 0, 0, 0.25);
@@ -109,7 +115,7 @@ button {
 }
 
 .blue_bg {
-  background: #005FF9;
+  background: #005ff9;
 }
 
 .blue_bg:hover:not(:disabled) {
@@ -117,7 +123,7 @@ button {
 }
 
 .red_bg {
-  background: #FF4646;
+  background: #ff4646;
 }
 
 .red_bg:hover:not(:disabled) {
@@ -143,7 +149,7 @@ button {
 }
 
 .title-top img:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .file-input {
