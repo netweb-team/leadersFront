@@ -65,7 +65,7 @@ export class PoolApiService {
 
 
 
-  public changeCorrestionsState(tableId: string, body: { action: 'on' | 'off' | 'change', flat_id: number, corrections: { [key: string] : number}}) {
+  public changeCorrectionsState(tableId: string, body: { action: 'on' | 'off' | 'change', flat_id: number, corrections: { [key: string] : number}}) {
 
     const url = `${this.urlPrefix}/${tableId}`;
 

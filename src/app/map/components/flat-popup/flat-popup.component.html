@@ -42,4 +42,4 @@
 
 </ng-container>
 
-<button mat-flat-button> Применить </button>
+<button mat-flat-button *ngIf="analog$ | async as analog" (click)="save(analog.id)"> Применить </button>

@@ -5,6 +5,7 @@ import * as _ from 'lodash';
 import { EtalonMock } from './flat.mock';
 import { PoolApiService } from 'src/app/core/services/api/pool-api.service';
 import { ResultTableService } from 'src/app/result-table/services/result-table.service';
+import { lastIndexOf } from 'lodash';
 
 @Injectable({
   providedIn: 'root'
@@ -47,6 +48,14 @@ export class EtalonsService {
     } catch {
 
     }
+  }
+
+  public changeCorrections(tableId: string, coefs: { [key: string]: number }, flatId: number) {
+    return lastValueFrom(this._poolsApi.changeCorrectionsState(tableId, { action: 'change', flat_id: flatId, corrections: coefs }));
+  }
+
+  public changeAnalog(tableId: string, analogId: string, enable: 'on' | 'off') {
+    return lastValueFrom(this._poolsApi.changeAnalogState(tableId, analogId, enable));
   }
 
 }

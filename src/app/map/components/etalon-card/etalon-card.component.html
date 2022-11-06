@@ -4,7 +4,7 @@
   <div class="etalon-analogs__title">Аналоги</div>
   <div class="etalon-analogs__list" >
     <div *ngFor="let analog of etalon?.analogs">
-      <mat-checkbox></mat-checkbox><app-analog-card [analog]="analog" [etalon]="etalon"></app-analog-card>
+      <mat-checkbox (change)="toggleAnalog(analog.id)"></mat-checkbox><app-analog-card [analog]="analog" [etalon]="etalon"></app-analog-card>
     </div>
   </div>
 </div>
