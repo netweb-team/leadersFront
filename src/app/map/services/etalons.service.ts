@@ -51,7 +51,7 @@ export class EtalonsService {
   }
 
   public changeCorrections(tableId: string, coefs: { [key: string]: number }, flatId: number) {
-    return lastValueFrom(this._poolsApi.changeCorrectionsState(tableId, { action: 'change', flat_id: flatId, corrections: coefs }));
+    return lastValueFrom(this._poolsApi.changeCorrectionsState(tableId, {flat_id: flatId, corrections: coefs }));
   }
 
   public changeAnalog(tableId: string, analogId: string, enable: 'on' | 'off') {

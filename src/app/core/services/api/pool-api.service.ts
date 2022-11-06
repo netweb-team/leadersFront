@@ -55,25 +55,22 @@ export class PoolApiService {
 
     let params = new HttpParams();
 
-    params = params.set('analog', '1');
+    params = params.set('analog', analogId.toString());
 
-    return this.http.put<ApiResponse<number>>(url, {
-      analog_id: analogId,
-      enable,
-    } ,{params});
+    return this.http.put<ApiResponse<number>>(url, {} ,{params});
   }
 
 
 
-  public changeCorrectionsState(tableId: string, body: { action: 'on' | 'off' | 'change', flat_id: number, corrections: { [key: string] : number}}) {
+  public changeCorrectionsState(tableId: string, body: { flat_id: number, corrections: { [key: string] : number}}) {
 
     const url = `${this.urlPrefix}/${tableId}`;
 
     let params = new HttpParams();
 
-    params = params.set('correct', '1');
+    params = params.set('correct', body.flat_id.toString());
 
-    return this.http.put<ApiResponse<number>>(url, body,{params});
+    return this.http.put<ApiResponse<number>>(url, body.corrections ,{params});
   }
 
 }
