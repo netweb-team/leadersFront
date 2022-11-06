@@ -9,7 +9,7 @@
         <ng-container matColumnDef="check">
           <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> </th>
           <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
-            <input type="checkbox" (change)="startTable.checklistSelection.toggle(element.index+1)"/>
+            <input type="checkbox" (change)="startTable.checklistSelection.toggle(element.index)"/>
           </td>
         </ng-container>
         <ng-container matColumnDef="index">
