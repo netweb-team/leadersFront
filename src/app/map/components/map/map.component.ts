@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnInit } from '@angular/core';
 import * as L from 'leaflet';
 import { MapService } from '../../services/map.service';
 
@@ -9,7 +9,9 @@ import { MapService } from '../../services/map.service';
   templateUrl: './map.component.html',
   styleUrls: ['./map.component.scss']
 })
-export class MapComponent implements OnInit {
+export class MapComponent implements OnInit, AfterViewInit {
+
+  private map?: L.Map;
 
   public options: L.MapOptions = {
     layers: [
@@ -29,10 +31,19 @@ export class MapComponent implements OnInit {
   public onMapReady(event: any) {
     console.log(event);
     this._map.initializeMap(event as L.Map);
+    this.map = event as L.Map;
   }
 
   public ngOnDestroy() {
     this._map.disposeMap();
   }
 
+
+  public resize() {
+    this.map?.invalidateSize();
+  }
+
+  public ngAfterViewInit(): void {
+    setTimeout(() => this.map?.invalidateSize(), 0)
+  }
 }
