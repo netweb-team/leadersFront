@@ -1,6 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
+import saveAs from 'file-saver';
 import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { PoolsTable, PoolsTableRow } from 'src/app/core/models/pool';
 import { PoolMock } from 'src/app/core/models/pool.mock';
@@ -49,13 +50,19 @@ export class StartTableService {
     this._router.navigate(['/map', tableId], { queryParams: { pattern: patternId } });
   }
 
-  public download() {
+  public async download() {
 
     const tableId = this.getTableId();
     if (!tableId) {
       return;
     }
-    return lastValueFrom(this._poolsApi.download(tableId.toString()))
+
+    const response: Blob = await lastValueFrom(this._poolsApi.download(tableId.toString()))
+    const dataType = response.type;
+    const binaryData = [];
+    binaryData.push(response);
+    const data = new Blob(binaryData, { type: dataType });
+    saveAs(data, `Рассчет #${tableId} от ${(new Date()).toLocaleDateString()}`);
   }
 
 }

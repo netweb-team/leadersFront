@@ -1,6 +1,7 @@
 import { SelectionModel } from '@angular/cdk/collections';
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import _ from 'lodash';
 import { EtalonWithAnalogs } from '../../models/flat';
 import { EtalonsService } from '../../services/etalons.service';
 
@@ -15,6 +16,10 @@ export class EtalonCardComponent implements OnInit {
 
   @Input()
   public etalon?: EtalonWithAnalogs;
+
+  public get analogs() {
+    return _.sortBy(this.etalon?.analogs, 'id')
+  }
 
   constructor(
     public readonly etalonService: EtalonsService,

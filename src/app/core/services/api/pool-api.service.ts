@@ -46,7 +46,7 @@ export class PoolApiService {
 
     params = params.set('download', '1');
 
-    return this.http.get<ApiResponse<Row[]>>(url, {params});
+    return this.http.get(url, {params, responseType: 'blob' });
   }
 
   public changeAnalogState(tableId: string, analogId: string, enable: 'on' | 'off') {
