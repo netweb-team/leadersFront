@@ -1,0 +1,80 @@
+<div class="page">
+  <div class="page_content">
+    <div class="top">
+      <div class="search"><img src="assets/icons/findIcon.png"><input class="search_input" type="text"
+          autocomplete="off"></div>
+    </div>
+
+    <ng-container *ngIf="resultTable.table$ | async as table; else noTable">
+      <div class="title-top">
+        Результат
+        <img src="assets/icons/penIcon.png">
+      </div>
+
+      <div class="table-host" *ngIf="table$ | async; else noJournal">
+        <ng-container *ngIf="(dataSource | async) as data; else noJournal">
+          <ng-container *ngIf="data.length !== 0">
+            <div class="title-table">
+              Таблица типовой недвижимости
+            </div>
+            <table mat-table class="start-table custom-table" [dataSource]="data">
+
+              <ng-container matColumnDef="index">
+                <th class="mat-body-2 start-table-index-column" mat-header-cell *matHeaderCellDef> №</th>
+                <td class="mat-body-2 start-table-index-column" mat-cell *matCellDef="let element">
+                  {{ element.index }} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="address">
+                <th class="mat-body-2 start-table-address-column" mat-header-cell *matHeaderCellDef> Адрес </th>
+                <td class="mat-body-2 start-table-address-column" mat-cell *matCellDef="let element">
+                  {{ element.a }}
+                </td>
+              </ng-container>
+
+              <ng-container matColumnDef="rooms">
+                <th class="mat-body-2 start-table-rooms-column" mat-header-cell *matHeaderCellDef> Комнат </th>
+                <td class="mat-body-2 start-table-rooms-column" mat-cell *matCellDef="let element">
+                  {{element.r}} </td>
+              </ng-container>
+
+
+              <ng-container matColumnDef="floors">
+                <th class="mat-body-2 start-table-floors-column" mat-header-cell *matHeaderCellDef> Этажность </th>
+                <td class="mat-body-2 start-table-floors-column" mat-cell *matCellDef="let element">
+                  {{element.cf}} </td>
+              </ng-container>
+
+              <ng-container matColumnDef="price">
+                <th class="mat-body-2 start-table-price-column" mat-header-cell *matHeaderCellDef> Цена</th>
+                <td class="mat-body-2 start-table-price-column" mat-cell *matCellDef="let element">
+                  {{element.p}} </td>
+              </ng-container>
+
+              <tr mat-header-row *matHeaderRowDef="displayedColumns; sticky: true"></tr>
+              <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+          </ng-container>
+          <ng-template #noRecords>
+            <div class="mat-headline">
+              <p>По вашему запросу ничего не найдено</p>
+            </div>
+          </ng-template>
+        </ng-container>
+      </div>
+      <ng-template #noJournal>
+        <div class=" mat-headline">
+          <p>Загрузите файл
+          </p>
+        </div>
+      </ng-template>
+
+      </ng-container>
+
+    <ng-template #noTable>
+      <h2 class="no-table-template">
+        Ничего не найдено. =
+      </h2>
+    </ng-template>
+  </div>
+</div>

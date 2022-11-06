@@ -52,3 +52,13 @@ export interface PatternAnalogs {
   analogs: Row[];
   coefs: CorrectCoefs[];
 }
+
+
+export interface ArchivePool {
+  id: number;
+  path: string;
+  table: Row[];
+  count?: number;
+  time: string;
+  pa: EtalonWithAnalogs[];
+}

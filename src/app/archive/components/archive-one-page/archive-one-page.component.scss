@@ -1,0 +1,176 @@
+.page {
+  max-width: 980px;
+  margin: 40px auto 40px auto;
+  padding: 2px;
+
+  background: #EFEFEF;
+  border-radius: 9px;
+}
+.page_content {
+  position: relative;
+  min-height: 600px;
+  padding: 10px;
+
+  background: #fff;
+  border-radius: 9px;
+
+  display: flex;
+  flex-direction: column;
+}
+
+input[type="submit"] {
+  appearance: none;
+}
+
+input:focus {
+  outline: none;
+}
+
+input[type="text"] {
+  flex: 1 0 auto;
+  width: auto;
+  height: 100%;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  border: none;
+  background: none;
+
+  appearance: none;
+}
+
+.search {
+  display: flex;
+  flex: 1 0;
+  flex-direction: row;
+  align-items: center;
+
+  min-width: 150px;
+  margin-right: 10px;
+  height: 35px;
+  box-sizing: border-box;
+
+  background: #FFFFFF;
+  border: 2px solid #EFEFEF;
+  border-radius: 7px;
+
+  box-shadow: 0 5px 4px rgba(0, 0, 0, 0.25);
+}
+.search img {
+  width: 20px;
+  padding: 5px;
+}
+
+button:focus {
+  outline: none;
+}
+
+button {
+  touch-action: manipulation;
+}
+
+.top_btn {
+  height: 35px;
+  padding: 8px;
+  margin: 2px;
+
+  font-size: 13px;
+  line-height: 16px;
+  font-weight: 600;
+
+  color: #fff;
+  background: #f22bf9;
+
+  border: none;
+  border-radius: 7px;
+  box-shadow: 0 4px 5px rgba(0, 0, 0, 0.25);
+
+  cursor: pointer;
+  transition: background 0.3s ease;
+
+  img {
+    width: 15px;
+    margin-bottom: -2px;
+  }
+}
+
+.top_btn:active:not(:disabled) {
+  transform: translateY(2px);
+}
+.top_btn:disabled {
+  opacity: 0.5;
+}
+
+.top {
+  width: 100%;
+  display: flex;
+  align-items: center;
+}
+
+.blue_bg {
+  background: #005FF9;
+}
+
+.blue_bg:hover:not(:disabled) {
+  background: #1021f9;
+}
+
+.red_bg {
+  background: #FF4646;
+}
+
+.red_bg:hover:not(:disabled) {
+  background: #ff1240;
+}
+
+.title-top {
+  font-size: 36px;
+  line-height: 36px;
+  font-weight: 600;
+  margin-right: 5px;
+  margin-top: 13px;
+
+  text-overflow: ellipsis;
+  overflow: hidden;
+  height: 100%;
+}
+
+.title-top img {
+  width: 22px;
+  height: 22px;
+  cursor: pointer;
+}
+
+.title-top img:hover {
+  opacity: .6;
+}
+
+.file-input {
+  display: none;
+}
+
+.no-table-template {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1;
+}
+
+.table-host {
+  width: 100%;
+
+  table {
+    width: 100%;;
+  }
+
+  .title-table {
+    margin-top: 18px;
+    font-size: 12px;
+    color: #ababab;
+    font-style: italic;
+    width: 100%;
+  }
+
+}
+

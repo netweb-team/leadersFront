@@ -12,14 +12,20 @@
         <ng-container matColumnDef="name">
           <th class="mat-body-2 start-table-address-column" mat-header-cell *matHeaderCellDef> Название </th>
           <td class="mat-body-2 start-table-address-column" mat-cell *matCellDef="let element">
-            {{ element.a }}
+           Расчет #{{ element.id}}
           </td>
         </ng-container>
 
         <ng-container matColumnDef="count">
           <th class="mat-body-2 start-table-rooms-column" mat-header-cell *matHeaderCellDef> Объектов </th>
           <td class="mat-body-2 start-table-rooms-column" mat-cell *matCellDef="let element">
-            {{element.r}} </td>
+            {{element.count}} </td>
+        </ng-container>
+
+        <ng-container matColumnDef="datetime">
+          <th class="mat-body-2 start-table-rooms-column" mat-header-cell *matHeaderCellDef> Дата </th>
+          <td class="mat-body-2 start-table-rooms-column" mat-cell *matCellDef="let element">
+            {{element.time | date : 'yyyy.dd.MM HH:mm:ss'}} </td>
         </ng-container>
 
 

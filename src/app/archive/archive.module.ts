@@ -9,13 +9,15 @@ import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatTableModule } from '@angular/material/table';
 import { CoreModule } from '../core/core.module';
 import { ArchiveRoutingModule } from './archive-routing.module';
+import { ArchiveOnePageComponent } from './components/archive-one-page/archive-one-page.component';
 
 
 
 @NgModule({
   declarations: [
     ArchivePageComponent,
-    ArchiveTableComponent
+    ArchiveTableComponent,
+    ArchiveOnePageComponent
   ],
   imports: [
     CommonModule,

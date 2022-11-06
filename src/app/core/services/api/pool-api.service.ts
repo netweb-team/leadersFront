@@ -1,6 +1,6 @@
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { EtalonWithAnalogs, Row } from 'src/app/map/models/flat';
+import { ArchivePool, EtalonWithAnalogs, Row } from 'src/app/map/models/flat';
 import { environment } from 'src/environments/environment';
 import { ApiResponse, PoolsTable } from '../../models/pool';
 
@@ -71,6 +71,17 @@ export class PoolApiService {
     params = params.set('correct', body.flat_id.toString());
 
     return this.http.put<ApiResponse<EtalonWithAnalogs>>(url, body.corrections ,{params});
+  }
+
+
+  public getArchive() {
+    const url = `${this.urlPrefix}`;
+    return this.http.get<ApiResponse<ArchivePool[]>>(url);
+  }
+
+  public getOneArchive(poolId: string) {
+    const url = `${this.urlPrefix}/${poolId}`;
+    return this.http.get<ApiResponse<ArchivePool>>(url);
   }
 
 }
