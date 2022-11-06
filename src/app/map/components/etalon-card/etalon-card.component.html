@@ -1,10 +1,10 @@
-<h1 class="etalon-title">Эталон 1.</h1>
+<h1 class="etalon-title">Эталон #1</h1>
 <app-flat-info [flatInfo]="etalon?.pattern"></app-flat-info>
 <div class="etalon-analogs" *ngIf="etalon">
   <div class="etalon-analogs__title">Аналоги</div>
   <div class="etalon-analogs__list" >
-    <div *ngFor="let analog of analogs">
-      <mat-checkbox [checked]="etalonService.analogsSelection.isSelected(analog.id.toString())" (change)="toggleAnalog(analog.id)"></mat-checkbox><app-analog-card [analog]="analog" [etalon]="etalon"></app-analog-card>
+    <div class="etalon-analogs__cell" *ngFor="let analog of analogs">
+      <input type="checkbox" class="check" [checked]="etalonService.analogsSelection.isSelected(analog.id.toString())" (change)="toggleAnalog(analog.id)"/><<app-analog-card [analog]="analog" [etalon]="etalon"></app-analog-card>
     </div>
   </div>
 </div>

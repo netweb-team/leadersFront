@@ -3,7 +3,17 @@
   flex-direction: column;
   gap: 10px;
   padding: 15px;
-  background-color: aquamarine;
-  border-radius: 15px;
+  margin-top: 10px;
+  background-color: #fff;
+  border: 2px solid #6d6d6d;
+  border-radius: 5px;
   box-sizing: border-box;
+  .red_bg2 {
+    margin-top: 5px;
+    color: white;
+    background: #e62f07;
+  }
+  .red_bg2:hover {
+    background: #9b1d03;
+  }
 }

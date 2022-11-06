@@ -15,7 +15,7 @@ import { newArray } from '@angular/compiler/src/util';
 })
 export class EtalonsService {
 
-  private readonly _etalonsWithAnalogs$ = new BehaviorSubject<EtalonWithAnalogs[]>([]);
+  private readonly _etalonsWithAnalogs$ = new BehaviorSubject<EtalonWithAnalogs[]>([EtalonMock]);
 
   public readonly etalonsWithAnalogs$ = this._etalonsWithAnalogs$.asObservable();
 
@@ -42,7 +42,7 @@ export class EtalonsService {
   public async findAnalogs(tableId: string, ids: string[]) {
     try {
       const result = await lastValueFrom(this._poolsApi.getAnalogs(tableId.toString(), ids[0]));
-      this._etalonsWithAnalogs$.next([result.body]);
+      // this._etalonsWithAnalogs$.next([result.body]);
       this.analogsSelection.select(...(result.body.analogs.map(analog => analog.id.toString())));
     } catch {
     }

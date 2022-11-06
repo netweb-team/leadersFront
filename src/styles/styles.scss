@@ -1,5 +1,9 @@
 @import "theme/theme.scss";
 
+body {
+  margin: 0;
+}
+
 input[type="submit"] {
   appearance: none;
 }
@@ -110,4 +114,8 @@ input[type="checkbox"]:hover:not(:disabled) {
     top: 0;
     z-index: 1;
   }
+}
+
+.leaflet-control-attribution {
+  display: none;
 }
