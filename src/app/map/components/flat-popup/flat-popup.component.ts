@@ -13,13 +13,17 @@ import { MapService } from '../../services/map.service';
 export const coefNames = new Map<string, string>([
   ['k', 'Кухня'],
   ['cf', 'Этаж'],
-  ['m', 'Метро']
+  ['m', 'Метро'],
+  ['sale', 'Коэф-т на торг'],
+  ['t', 'Площадь'],
+  ['b', 'Наличие балкона'],
+  ['st', 'Состояние квартиры']
 ])
+
+
 export interface CompareTableRow {
   type: string;
 }
-
-
 
 @Component({
   selector: 'app-flat-popup',
@@ -31,7 +35,7 @@ export class FlatPopupComponent implements OnInit {
 
   public columns = ['param', 'etalon', 'analog', 'coef'];
 
-  public data = ['k', 'cf', 'm'];
+  public data = ['sale','k', 'cf', 'm', 't', 'b', 'st'];
 
   public form = this._fb.group({
     sale: 0,
@@ -60,6 +64,10 @@ export class FlatPopupComponent implements OnInit {
       case 'k': return this.form.controls.kitchen as FormControl;
       case 'cf': return this.form.controls.floor as FormControl;
       case 'm': return this.form.controls.metro as FormControl;
+      case 't': return this.form.controls.total as FormControl;
+      case 'b': return this.form.controls.balcony as FormControl;
+      case 'st': return this.form.controls.state as FormControl;
+      case 'sale': return this.form.controls.sale as FormControl;
     }
     return null;
   }

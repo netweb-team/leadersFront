@@ -1,9 +1,9 @@
 <ng-container *ngIf="analog">
   <ng-container *ngIf="etalon">
 
-    <h1>Аналог 1</h1>
+    <h1>Аналог {{analog.id}}</h1>
     <app-flat-info [flatInfo]="analog"></app-flat-info>
-    <div> Расчетная стоимость: 150 тыс.руб / м2</div>
+    <div *ngIf="analog.ap"> Расчетная стоимость: {{analog.ap}} руб / м2</div>
     <button mat-flat-button class='red_bg2' (click)="popups.openPopup(analog, etalon)">Перейти</button>
   </ng-container>
 </ng-container>
