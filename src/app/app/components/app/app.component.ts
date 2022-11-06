@@ -21,7 +21,7 @@ export class AppComponent {
       this.auth.isAuth$.subscribe(
         res => {
           if (!res) {
-            this.router.navigate(['/auth'])
+            // this.router.navigate(['/auth'])
           }
         }
       )
