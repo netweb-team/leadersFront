@@ -90,12 +90,16 @@ export class FlatPopupComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  public save(flatId: number) {
+  public async save(flatId: number) {
     if (!this.form.valid) {
       return;
     }
     const coefs = this.form.value as CorrectCoefs;
     const tableId = this._route.snapshot.params.tableId;
-    this._etalon.changeCorrections(tableId, coefs as any, flatId);
+    const result = await this._etalon.changeCorrections(tableId, coefs as any, flatId);
+    if (result.status === 200) {
+      this._etalon.saveNewValue(result.body)
+    }
+
   }
 }

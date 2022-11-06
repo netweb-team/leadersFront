@@ -57,7 +57,7 @@ export class PoolApiService {
 
     params = params.set('analog', analogId.toString());
 
-    return this.http.put<ApiResponse<number>>(url, {} ,{params});
+    return this.http.put<ApiResponse<EtalonWithAnalogs>>(url, {} ,{params});
   }
 
 
@@ -70,7 +70,7 @@ export class PoolApiService {
 
     params = params.set('correct', body.flat_id.toString());
 
-    return this.http.put<ApiResponse<number>>(url, body.corrections ,{params});
+    return this.http.put<ApiResponse<EtalonWithAnalogs>>(url, body.corrections ,{params});
   }
 
 }

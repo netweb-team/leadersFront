@@ -12,28 +12,30 @@ import { EtalonsService } from '../../services/etalons.service';
 export class EtalonCardComponent implements OnInit {
 
 
-  public analogsSelection = new SelectionModel<string>(true);
 
   @Input()
   public etalon?: EtalonWithAnalogs;
 
   constructor(
-    private readonly _etalon: EtalonsService,
+    public readonly etalonService: EtalonsService,
     private readonly _route: ActivatedRoute,
-  ) { }
+  ) {}
 
   ngOnInit(): void {
   }
 
-  public toggleAnalog(analogId: number) {
+  public async toggleAnalog(analogId: number) {
     const id = analogId.toString();
     const tableId = this._route.snapshot.params.tableId;
-    this.analogsSelection.toggle(id);
-    if (this.analogsSelection.isSelected(id)) {
-      this._etalon.changeAnalog(tableId, id, 'on');
-    } else {
-      this._etalon.changeAnalog(tableId, id, 'off');
+    // this.analogsSelection.toggle(id);
+    // if (this.analogsSelection.isSelected(id)) {
+    const result = await this.etalonService.changeAnalog(tableId, id, 'on');
+    if (result.status === 200) {
+      this.etalonService.analogsSelection.toggle(analogId.toString());
     }
+    // } else {
+    //   this._etalon.changeAnalog(tableId, id, 'off');
+    // }
   }
 
 }
