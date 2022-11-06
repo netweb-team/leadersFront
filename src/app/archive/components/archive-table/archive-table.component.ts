@@ -14,7 +14,7 @@ import { ArchiveService } from '../../services/archive.service';
 })
 export class ArchiveTableComponent {
 
-  public displayedColumns = [ 'index', 'name', 'count', 'datetime'];
+  public displayedColumns = [ 'index', 'name', 'count', 'datetime', 'edit'];
 
   public table$ = this.archive.table$.pipe(
     // map(table => table?.table),

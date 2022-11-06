@@ -28,10 +28,16 @@ export class AuthApiService {
 
     return this.http.post<ApiResponse<null>>(url, {login, password}, {withCredentials: true});
   }
-
+ 
   public logout() {
     const url = `${this.urlPrefix}/auth`;
     return this.http.delete<ApiResponse<null>>(url);
   }
 
+
+  public isAuth() {
+    const url = `${this.urlPrefix}/auth`;
+
+    return this.http.get<ApiResponse<null>>(url);
+  }
 }

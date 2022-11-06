@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { BehaviorSubject } from 'rxjs';
+import { BehaviorSubject, lastValueFrom } from 'rxjs';
 import { AuthApiService } from 'src/app/core/services/api/auth.service';
 
 @Injectable({
@@ -13,7 +13,15 @@ export class AuthService {
 
   constructor(
     private readonly _authApi: AuthApiService
-  ) {}
+  ) {
+  }
+
+  public async getAuth() {
+    const result =  await lastValueFrom(this._authApi.isAuth());
+    if (result.status === 200) {
+      this._isAuth.next(true);
+    }
+  }
 
   public login(login: string, password: string) {
     return this._authApi.auth(login, password);
