@@ -61,8 +61,8 @@ export class StartTableService {
     const dataType = response.type;
     const binaryData = [];
     binaryData.push(response);
-    const data = new Blob(binaryData, { type: dataType });
-    saveAs(data, `Рассчет #${tableId} от ${(new Date()).toLocaleDateString()}`);
+    const data = new Blob(binaryData);
+    saveAs(data, `Рассчет #${tableId} от ${(new Date()).toLocaleDateString()}.xlsx`);
   }
 
 }

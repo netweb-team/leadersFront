@@ -35,24 +35,24 @@ export class AuthInterceptor implements HttpInterceptor {
     // }
 
     return next.handle(updatedRequest).pipe(
-      map(result => {
-        console.log(result);
-        if ((result as any).body?.status === 403) {
-          this.router.navigate(['auth']).catch(err => {
-            // eslint-disable-next-line no-console
-            console.error(err);
-          });
-        }
-        return result;
-      }),
+      // map(result => {
+      //   console.log(result);
+      //   if ((result as any).body?.status === 403) {
+      //     this.router.navigate(['auth']).catch(err => {
+      //       // eslint-disable-next-line no-console
+      //       console.error(err);
+      //     });
+      //   }
+      //   return result;
+      // }),
       catchError((error: HttpErrorResponse) => {
-        if (error.status === HttpStatusCode.Unauthorized) {
-          this.auth.logout();
-          this.router.navigate(['auth']).catch(err => {
-            // eslint-disable-next-line no-console
-            console.error(err);
-          });
-        }
+        // if (error.status === HttpStatusCode.Unauthorized) {
+        //   this.auth.logout();
+        //   this.router.navigate(['auth']).catch(err => {
+        //     // eslint-disable-next-line no-console
+        //     console.error(err);
+        //   });
+        // }
         return throwError(() => error);
       }),
 
