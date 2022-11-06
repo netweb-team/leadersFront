@@ -20,11 +20,8 @@ export class AppComponent {
       this.auth.getAuth();
       this.auth.isAuth$.subscribe(
         res => {
-          if (res) {
-            this.router.navigate(['/start'])
-          } else {
+          if (!res) {
             this.router.navigate(['/auth'])
-
           }
         }
       )
